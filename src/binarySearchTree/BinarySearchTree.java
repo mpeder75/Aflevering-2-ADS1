@@ -1,3 +1,6 @@
+package binarySearchTree;
+import binaryTree.BinaryTree;
+
 public class BinarySearchTree <T> extends BinaryTree <T>
 {
     BinarySearchTreeNode<T> root;
