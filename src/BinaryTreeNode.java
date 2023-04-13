@@ -1,8 +1,8 @@
-public class BinaryTreeNode {
+public class BinaryTreeNode<T> implements Comparable<T>{
 
-    private T element ;
-    private BinaryTreeNode leftChild;
-    private BinaryTreeNode rightChild;
+    private T element;
+    private BinaryTreeNode<T> leftChild;
+    private BinaryTreeNode<T> rightChild;
 
     public void setElement(T element)
     {
@@ -14,22 +14,28 @@ public class BinaryTreeNode {
         return element;
     }
 
-    public void addLeftChild(BinaryTreeNode leftChild)
+    public void addLeftChild(BinaryTreeNode<T> leftChild)
     {
         this.leftChild = leftChild;
     }
 
-    public void addRightChild(BinaryTreeNode rightChild)
+    public void addRightChild(BinaryTreeNode<T> rightChild)
     {
         this.rightChild = rightChild;
     }
 
-    public BinaryTreeNode getLeftChild()
+    public BinaryTreeNode<T> getLeftChild()
     {
         return leftChild;
     }
 
-    public BinaryTreeNode getRightChild(){
+    public BinaryTreeNode<T> getRightChild(){
         return rightChild;
+    }
+
+    @Override
+    public int compareTo(T o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }
 }

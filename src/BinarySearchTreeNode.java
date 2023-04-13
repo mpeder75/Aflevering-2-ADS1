@@ -1,10 +1,4 @@
-public class BinarySearchTreeNode <T> extends BinaryTreeNode implements Comparable <T> {
+public class BinarySearchTreeNode <T> extends BinaryTreeNode<T> {
 
     private T element;
-
-
-    @Override
-    public int compareTo(T o) {
-        return 0;
-    }
 }

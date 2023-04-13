@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 
-public class BinaryTree <T> implements Comparable <T>
+public class BinaryTree <T>
 {
 
-    private BinaryTreeNode root;
+    private BinaryTreeNode<T> root;
     private int size;
 
 
 
-    public BinaryTreeNode getRoot(){
+    public BinaryTreeNode<T> getRoot(){
         return root;
     }
 
-    public void setRoot(BinaryTreeNode root){
+    public void setRoot(BinaryTreeNode<T> root){
         this.root = root;
     }
 
@@ -27,7 +27,8 @@ public class BinaryTree <T> implements Comparable <T>
 
     public boolean contains (T element)
     {
-        while()
+        // TODO:
+        while(true)
         {
             if (root == null) return false;
 
@@ -42,31 +43,31 @@ public class BinaryTree <T> implements Comparable <T>
 
     public ArrayList<T> inOrder()
     {
-
+        // TODO:
+        throw new UnsupportedOperationException("Unimplemented method");
     }
 
     public ArrayList<T> preOrder()
     {
-
+        // TODO:
+        throw new UnsupportedOperationException("Unimplemented method");
     }
 
     public ArrayList<T> postOrder()
     {
-
+        // TODO:
+        throw new UnsupportedOperationException("Unimplemented method");
     }
 
     public ArrayList<T> levelOrder()
     {
-
+        // TODO:
+        throw new UnsupportedOperationException("Unimplemented method");
     }
 
     public int height()
     {
+        // TODO:
         return size -1;
-    }
-
-    @Override
-    public int compareTo(T o) {
-        return 0;
     }
 }
