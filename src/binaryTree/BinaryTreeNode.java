@@ -1,9 +1,16 @@
 package binaryTree;
-public class BinaryTreeNode<T> implements Comparable<T>{
+public class BinaryTreeNode<T>{
 
     private T element;
     private BinaryTreeNode<T> leftChild;
     private BinaryTreeNode<T> rightChild;
+
+    public BinaryTreeNode(T element) {
+        this.element = element;
+    }
+
+    public BinaryTreeNode() {
+    }
 
     public void setElement(T element)
     {
@@ -32,11 +39,5 @@ public class BinaryTreeNode<T> implements Comparable<T>{
 
     public BinaryTreeNode<T> getRightChild(){
         return rightChild;
-    }
-
-    @Override
-    public int compareTo(T o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }
 }
