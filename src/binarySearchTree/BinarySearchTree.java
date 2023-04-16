@@ -124,7 +124,7 @@ public class BinarySearchTree <T> extends BinaryTree <T>
         
         int balance_factor = height(root.getLeftChild()) - height(root.getRightChild());
 
-        if (!(balance_factor > 1 || balance_factor < 1)) {
+        if (!(balance_factor > 1 || balance_factor < -1)) {
             System.out.println("Tree is balanced");
             return;
         }
