@@ -43,34 +43,50 @@ public class BinarySearchTree <T> extends BinaryTree <T>
 
 
     public boolean removeElement(T element) {
-        if (this.root == null)
+        if (root == null) {
             return false;
-        
-        BinaryTreeNode<T> removingNode = findNode(element, this.root);
-        BinaryTreeNode<T> replacingNode = findRightMostNode(this.root);
-
-        if (removingNode == null || replacingNode == null)
-            return false;
-
-        removingNode.setElement(replacingNode.getElement());
-        removeRightMostNode(this.root);
-
-        return true;
-    }
-
-    private void removeRightMostNode(BinaryTreeNode<T> currentNode) {
-        // TODO: 
-    }
-
-    private BinaryTreeNode<T> findRightMostNode(BinaryTreeNode<T> currentNode) {
-
-        // TODO:
-        
-        if (currentNode.getRightChild() != null) {
-            return findRightMostNode(currentNode.getRightChild());
         }
 
-        return currentNode;
+        return  removeElementRecursive(findNode(element, root), root);
+    }
+
+    private boolean removeElementRecursive(BinaryTreeNode<T> nodeToDelete, BinaryTreeNode<T> currentNode) {
+
+        if (nodeToDelete.equals(currentNode))
+            return false;
+        
+        if ((Integer) currentNode.getElement() < (Integer) nodeToDelete.getElement() && 
+                removeElementRecursive(nodeToDelete, currentNode.getLeftChild()) == false) {
+                
+            return swapNodesAndDelete(nodeToDelete);
+        }
+
+        if ((Integer) currentNode.getElement() > (Integer) nodeToDelete.getElement() && 
+                removeElementRecursive(nodeToDelete, currentNode.getRightChild()) == false) {
+                
+            return swapNodesAndDelete(nodeToDelete);
+        }
+
+        throw new IllegalArgumentException("No such element in tree");
+    }
+
+    private boolean swapNodesAndDelete(BinaryTreeNode<T> nodeToDelete) {
+        BinaryTreeNode<T> swapNode = null, currentNode;
+
+        currentNode = nodeToDelete.getRightChild();
+
+        while (swapNode == null) {
+            if (currentNode.getLeftChild() != null) {
+                currentNode = currentNode.getLeftChild();
+            }
+            else swapNode = currentNode;
+        }
+
+        nodeToDelete.addLeftChild(swapNode.getLeftChild());
+
+        nodeToDelete.setElement(swapNode.getElement());
+
+        return true;
     }
 
     private BinaryTreeNode<T> findNode(T element, BinaryTreeNode<T> currentNode) {
@@ -105,7 +121,16 @@ public class BinarySearchTree <T> extends BinaryTree <T>
     }
 
     public void rebalance() {
-        // TODO:
+        
+        int balance_factor = height(root.getLeftChild()) - height(root.getRightChild());
+
+        if (!(balance_factor > 1 || balance_factor < 1)) {
+            System.out.println("Tree is balanced");
+            return;
+        }
+
+        
+
     }
 
 }

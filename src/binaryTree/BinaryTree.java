@@ -145,6 +145,12 @@ public class BinaryTree<T> {
         return heightTraversal(-1, this.root);
     }
 
+    public int height(BinaryTreeNode<T> currentNode) {
+        if (currentNode == null) return 0;
+
+        return heightTraversal(-1, currentNode);
+    }
+
     public int heightTraversal(int height, BinaryTreeNode<T> currentNode) {
 
         height += 1;
@@ -160,7 +166,5 @@ public class BinaryTree<T> {
             rightHeight += heightTraversal(height, currentNode.getRightChild());
 
         return Math.max(rightHeight, leftHeight);
-
-
     }
 }
