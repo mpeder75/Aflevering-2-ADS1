@@ -133,7 +133,40 @@ public class BinarySearchTree <T> extends BinaryTree <T>
 
     }
 
-    private int rebalanceRecursive(BinaryTreeNode currentNode) {
+    private int rebalanceRecursive(BinaryTreeNode<T> currentNode) {
+        
+    }
+
+    private void leftLeftRotation(BinaryTreeNode<T> parentNode, BinaryTreeNode<T> childNode) {
+        parentNode.addLeftChild(childNode.getRightChild());
+        childNode.addRightChild(parentNode);
+    }
+
+    private void rightRightRotation(BinaryTreeNode<T> parentNode, BinaryTreeNode<T> childNode) {
+        parentNode.addRightChild(childNode.getLeftChild());
+        childNode.addLeftChild(parentNode);
+    }
+
+    private void leftRightRotation(BinaryTreeNode<T> parentNode, BinaryTreeNode<T> childNode) {
+        BinaryTreeNode<T> grandChildNode = childNode.getRightChild();
+
+        // Making initial right rotation
+        rightRightRotation(childNode, grandChildNode);
+
+        // Making left rotation
+        leftLeftRotation(parentNode, grandChildNode);
+
+    }
+
+    private void rightLeftRotation(BinaryTreeNode<T> parentNode, BinaryTreeNode<T> childNode) {
+        BinaryTreeNode<T> grandChildNode = childNode.getLeftChild();
+
+        // Making left rotation
+        leftLeftRotation(parentNode, grandChildNode);
+
+        // Making initial right rotation
+        rightRightRotation(childNode, grandChildNode);
+
         
     }
 
