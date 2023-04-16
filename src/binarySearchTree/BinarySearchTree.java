@@ -129,13 +129,35 @@ public class BinarySearchTree <T> extends BinaryTree <T>
             return;
         }
 
-        
-
     }
 
-    private int rebalanceRecursive(BinaryTreeNode<T> currentNode) {
-        
+    private boolean rebalanceRecursive(BinaryTreeNode<T> currentNode) {
+
+        boolean isLeft = false;
+
+        if (height(currentNode.getLeftChild()) > height(currentNode.getRightChild())) {
+            isLeft = true;
+
+            if (height(currentNode.getLeftChild()) > 2) {
+                rebalanceRecursive(currentNode.getLeftChild());
+            }
+        } else {
+            if (height(currentNode.getRightChild()) > 2) {
+                rebalanceRecursive(currentNode.getRightChild());
+            }
+        }
+
+        if (isLeft)
+        {
+        leftLeftRotation(currentNode, currentNode.getLeftChild());
+        } else {
+            rightRightRotation(currentNode, currentNode.getRightChild());
+        }
+        return true;
     }
+
+
+
 
     private void leftLeftRotation(BinaryTreeNode<T> parentNode, BinaryTreeNode<T> childNode) {
         parentNode.addLeftChild(childNode.getRightChild());
