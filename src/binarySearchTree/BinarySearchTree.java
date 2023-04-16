@@ -133,4 +133,8 @@ public class BinarySearchTree <T> extends BinaryTree <T>
 
     }
 
+    private int rebalanceRecursive(BinaryTreeNode currentNode) {
+        
+    }
+
 }
